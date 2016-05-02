@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.xiaolei.houseTax.InputPriceActivity">
+
+    <EditText
+        android:id="@+id/inputTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_alignBottom="@+id/totalPrice"
+        android:layout_alignLeft="@+id/inputOldPrice" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="成交总价"
+        android:id="@+id/totalPrice"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="54dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="购买年限"
+        android:id="@+id/yearsBought"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="47dp" />
+
+    <EditText
+        android:id="@+id/inputYears"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_alignBottom="@+id/yearsBought"
+        android:layout_alignLeft="@+id/inputLowPrice" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="房屋原值"
+        android:id="@+id/textView"
+        android:layout_marginTop="43dp"
+        android:layout_below="@+id/totalPrice"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:id="@+id/inputOldPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignLeft="@+id/inputYears" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="最低过户价"
+        android:id="@+id/textViewzhidao"
+        android:layout_below="@+id/yearsBought"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="68dp" />
+
+    <EditText
+        android:id="@+id/inputLowPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_alignBottom="@+id/textViewzhidao"
+        android:layout_alignParentRight="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始计算"
+        android:id="@+id/btnCal"
+        android:onClick = "startCalPay"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textViewzhidao" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="卖家唯一"
+        android:id="@+id/checkBoxOnly"
+        android:checked="false"
+        android:height="@dimen/abc_action_bar_icon_vertical_padding_material"
+        android:longClickable="false"
+        android:textSize="@dimen/activity_vertical_margin"
+        android:layout_alignBottom="@+id/checkBoxFirst"
+        android:layout_alignRight="@+id/inputLowPrice"
+        android:layout_alignTop="@+id/checkBoxFirst"
+        android:layout_alignLeft="@+id/inputLowPrice" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="买家首套房"
+        android:id="@+id/checkBoxFirst"
+        android:checked="false"
+        android:height="@dimen/abc_action_bar_icon_vertical_padding_material"
+        android:longClickable="false"
+        android:textSize="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/textViewzhidao"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="54dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查看公式"
+        android:id="@+id/btnHelp"
+        android:onClick="showHelp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/checkBoxOnly"
+        android:layout_marginRight="52dp" />
+</RelativeLayout>

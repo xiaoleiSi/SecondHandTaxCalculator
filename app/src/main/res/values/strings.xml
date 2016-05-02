@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">二手房税率计算器</string>
+    <string name="id_shoufu">输入首付房款</string>
+    <string name="Version">V0.1 2016/5/2</string>
+    <string name="wangqianjiage">最合理的网签价：</string>
+
+</resources>
