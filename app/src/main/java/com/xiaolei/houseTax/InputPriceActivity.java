@@ -9,6 +9,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.SaveCallback;
+
 public class InputPriceActivity extends AppCompatActivity {
 
     public int totalPrice;//总价
@@ -24,11 +28,17 @@ public class InputPriceActivity extends AppCompatActivity {
     private EditText inputLowPrice;
     private CheckBox checkBoxOnly;
     private CheckBox checkBoxFirst;
-
+    private MyLeanCloudApp myLeanCloud ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        myLeanCloud = new MyLeanCloudApp();
+//        myLeanCloud.onCreate();
         setContentView(R.layout.activity_input_price);
+
+        // 测试 SDK 是否正常工作的代码
+        myAVOSUpload testObject = new myAVOSUpload("startup_record");
+        testObject.putData("StartUp", "I am from "+android.os.Build.MODEL);
 
         inputTotalPrice = (EditText) findViewById(R.id.inputTotalPrice);
         inputPrePrice = (EditText) findViewById(R.id.inputOldPrice);
@@ -87,6 +97,7 @@ public class InputPriceActivity extends AppCompatActivity {
             Intent intent = new Intent(InputPriceActivity.this, helpActivity.class);
             startActivity(intent);
         }
+
 
 
 }
