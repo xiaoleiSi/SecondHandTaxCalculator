@@ -1,9 +1,10 @@
 package com.xiaolei.houseTax;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -32,7 +33,6 @@ public class startCalHouseActivity extends AppCompatActivity {
     private float gerensuodeshui; //个人所得税 差额20%
     private float totalTax; //个人所得税 差额20%
 
-
     private String TAG="计算付款页面";
 
     private EditText editTextInputShoufu;
@@ -56,8 +56,8 @@ public class startCalHouseActivity extends AppCompatActivity {
         bonly = intent.getIntExtra("only", 0);
         bfirst = intent.getIntExtra("first", 0);
         editTextInputShoufu = (EditText)findViewById(R.id.inputShoufu);
-
         //result
+
         textWangqianPrice = (TextView)findViewById(R.id.WangqianId);
         textTotalTax = (TextView)findViewById(R.id.textTotalTax);
         textqishui = (TextView)findViewById(R.id.qishui);
@@ -75,6 +75,22 @@ public class startCalHouseActivity extends AppCompatActivity {
         idyingyeTax.setText(yingyeshui+"");
         idgerensuode.setText(gerensuodeshui+"");
 
+        myAVOSUpload priceUploader = new myAVOSUpload("Price");
+        String []item=new String[5];
+        item[0]="shoufu";
+        item[1]="TotalPrice";
+        item[2]="prePrice";
+        item[3]="wangqianjia";
+        item[4] = "years";
+
+        Integer[] price=new Integer[5];
+        price[0]=shoufu;
+        price[1]=totalPrice;
+        price[2]=prePrice;
+        price[3]=(int)wangqianPrice;
+        price[4]=yearsBought;
+
+        priceUploader.putDataArray(item,price);
     }
 
     private  void showALertMoneyNotEnough(int leak){
@@ -113,7 +129,7 @@ public class startCalHouseActivity extends AppCompatActivity {
             wangqianPrice = lowestPirce;
         }
 
-        qishui = (float)0.01*wangqianPrice;
+        qishui = wangqianPrice/100;
         gerensuodeshui = 0;
         yingyeshui = 0;
 
@@ -126,7 +142,7 @@ public class startCalHouseActivity extends AppCompatActivity {
             if (wangqianPrice<=prePrice){
 
             }else{
-                gerensuodeshui = (float)0.2*(wangqianPrice-prePrice);
+                gerensuodeshui = (wangqianPrice-prePrice)/5;
                 Log.d(TAG, "有营业税："+yingyeshui);
             }
 
@@ -134,6 +150,8 @@ public class startCalHouseActivity extends AppCompatActivity {
         totalTax = yingyeshui+gerensuodeshui+qishui;
         Log.d(TAG, "营业税："+yingyeshui);
         updateUI();
+
+
         return;
     }
 

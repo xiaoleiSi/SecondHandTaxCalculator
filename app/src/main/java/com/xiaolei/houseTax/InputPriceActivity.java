@@ -14,7 +14,7 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.SaveCallback;
 
 public class InputPriceActivity extends AppCompatActivity {
-
+    public int version;
     public int totalPrice;//总价
     public int prePrice;//房屋原值
     public int yearsBought; //几年前购买的
@@ -36,9 +36,22 @@ public class InputPriceActivity extends AppCompatActivity {
 //        myLeanCloud.onCreate();
         setContentView(R.layout.activity_input_price);
 
+        version = 0x0001;
+
         // 测试 SDK 是否正常工作的代码
         myAVOSUpload testObject = new myAVOSUpload("startup_record");
-        testObject.putData("StartUp", "I am from "+android.os.Build.MODEL);
+        String []userId=new String[3];
+        String []IdInfo=new String[3];
+
+        userId[0] = "PhoneType";
+        IdInfo[0] = android.os.Build.MODEL;
+        userId[1] = "SN";
+        IdInfo[1] = android.os.Build.SERIAL;
+
+        userId[2] = "Version";
+        IdInfo[2]=version+"";
+
+        testObject.putDataArray(userId, IdInfo);
 
         inputTotalPrice = (EditText) findViewById(R.id.inputTotalPrice);
         inputPrePrice = (EditText) findViewById(R.id.inputOldPrice);
