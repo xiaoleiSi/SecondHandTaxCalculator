@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".startCalHouseActivity" />
-        <activity android:name=".helpActivity"></activity>
+        <activity android:name=".helpActivity"/>
     </application>
 
 </manifest>
